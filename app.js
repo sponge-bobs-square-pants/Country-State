@@ -32,8 +32,19 @@ app.get('/api/v1/State', async (req, res) => {
         }
 
         const countryIds = country_id.split(',').map(id => parseInt(id.trim()));
-        const uniqueStates = await state.distinct('name', { country_id: { $in: countryIds } });
-        // const states = await state.find({ country_id: { $in: countryIds } });
+        // const uniqueStates = await state.distinct('name', { country_id: { $in: countryIds } });
+        // console.log(uniqueStates);
+        const states = await state.find({ country_id: { $in: countryIds } });
+        const uniqueStateNames = new Set();
+
+        // Filter out duplicate state names and keep the entire state object
+        const uniqueStates = states.filter((state) => {
+            if (!uniqueStateNames.has(state.name)) {
+                uniqueStateNames.add(state.name);
+                return true;
+            }
+            return false;
+        });
         return res.status(200).json({ uniqueStates });
     } catch (error) {
         return res.status(500).json({ error: `Internal Server Error ${error}` });
