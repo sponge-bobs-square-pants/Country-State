@@ -7,9 +7,9 @@ const port = process.env.PORT || 6000
 const country = require('./Models/countrySchema')
 const state = require('./Models/stateSchema')
 const city = require('./Models/citySchema')
-const countriesData = require('./Countries.json')
-const statesData = require('./States.json');
-const citiesData = require('./Cities.json');
+// const countriesData = require('./Countries.json')
+// const statesData = require('./States.json');
+// const citiesData = require('./Cities.json');
 const helmet = require('helmet')
 app.use(express.json());
 app.use(cors());
@@ -51,31 +51,25 @@ app.get('/api/v1/City', async (req, res) => {
         return res.status(500).json({ error: `Internal Server Error ${error}` });
     }
 })
-const populateData = async () => {
-    const countryCount = await country.countDocuments();
-    if (countryCount === 0) {
-        await country.insertMany(countriesData);
-        await state.insertMany(statesData);
-        await city.insertMany(citiesData);
-    }
-};
-const createIndexes = async () => {
-    await country.createIndexes();
-    await state.createIndexes();
-    await city.createIndexes();
-};
+// const populateData = async () => {
+//     const countryCount = await country.countDocuments();
+//     if (countryCount === 0) {
+//         await country.insertMany(countriesData);
+//         await state.insertMany(statesData);
+//         await city.insertMany(citiesData);
+//     }
+// };
+// const createIndexes = async () => {
+//     await country.createIndexes();
+//     await state.createIndexes();
+//     await city.createIndexes();
+// };
 
 const start = async () => {
     try {
         await connectDB(process.env.MONGO_URI);
-
-        // Populate data
-        await populateData();
-
-        // Create indexes
-        await createIndexes();
-
-        // Start the server
+        // await populateData();
+        // await createIndexes();
         app.listen(port, () => {
             console.log(`Server is listening on port ${port}`);
         });
