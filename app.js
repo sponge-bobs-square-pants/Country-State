@@ -27,18 +27,14 @@ app.get('/api/v1/Countries', async (req, res) =>{
 app.get('/api/v1/State', async (req, res) => {
     try {
         const country_id = req.query.country_id;
-
-        // Check if country_id is provided
         if (!country_id) {
             return res.status(400).json({ error: 'Missing country_id parameter' });
         }
 
-        // Convert comma-separated string to an array of integers
         const countryIds = country_id.split(',').map(id => parseInt(id.trim()));
-
-        // Fetch states based on the array of country_ids
-        const states = await state.find({ country_id: { $in: countryIds } });
-        return res.status(200).json({ states });
+        const uniqueStates = await state.distinct('name', { country_id: { $in: countryIds } });
+        // const states = await state.find({ country_id: { $in: countryIds } });
+        return res.status(200).json({ uniqueStates });
     } catch (error) {
         return res.status(500).json({ error: `Internal Server Error ${error}` });
     }
