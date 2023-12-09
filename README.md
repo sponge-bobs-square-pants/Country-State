@@ -43,8 +43,8 @@ The server will be running on http://localhost:6000
     **Description:** Retrieve a list of cities for the specified state.  
 
 4. ### REQUIRED FILES:
-    **country.json:**`https://country-state-city-dajz.onrender.com/api/v1/Countries`
-    **state.json:**`https://country-state-city-dajz.onrender.com/api/v1/State?country_id=101`
+    **country.json:**`https://country-state-city-dajz.onrender.com/api/v1/Countries`  
+    **state.json:**`https://country-state-city-dajz.onrender.com/api/v1/State?country_id=101`  
     **city.json:**`https://country-state-city-dajz.onrender.com/api/v1/City?state_id=4021`
 
 5. ### JSON FORMAT:
