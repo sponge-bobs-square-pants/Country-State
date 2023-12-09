@@ -28,19 +28,19 @@ The server will be running on http://localhost:6000
 ## ENDPOINTS
 
 1.  ### Get Countries:
-    **Endpoint:** `/api/v1/Countries`
-    **Method:** `GET`
-    **Description:** Retrieve a list of countries.
-2. ### Get States:
-    **Endpoint:** `/api/v1/State`
-    **Method:** `GET`
-    **Parameters:** `country_id` (required): Comma-separated list of country IDs.
-    **Description:** Retrieve a list of unique states for the specified countries.
+    **Endpoint:** `/api/v1/Countries`  
+    **Method:** `GET`  
+    **Description:** Retrieve a list of countries.  
+2. ### Get States:  
+    **Endpoint:** `/api/v1/State`  
+    **Method:** `GET`  
+    **Parameters:** `country_id` (required):   Comma-separated list of country IDs.  
+    **Description:** Retrieve a list of unique states for the specified countries.  
 3. ### Get Cities:
-    **Endpoint:** `/api/v1/City`
-    **Method:** `GET`
-    **Parameters:** `state_id` (required): ID of the state.
-    **Description:** Retrieve a list of cities for the specified state.
+    **Endpoint:** `/api/v1/City`  
+    **Method:** `GET`  
+    **Parameters:** `state_id` (required): ID of the state.  
+    **Description:** Retrieve a list of cities for the specified state.  
 
 4. ### REQUIRED FILES:
     **country.json:**`https://country-state-city-dajz.onrender.com/api/v1/Countries`
